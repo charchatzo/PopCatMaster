@@ -25,11 +25,17 @@
     <button onclick="addScore(); playAudio('pop.mp3');" class="popcat"></button>
     <h1 align="center" id="scorelabel" style="color: gray;">0</p>
 <script>
-  var score = 0;
+  var score_str = localStorage.getItem('score');
+  var score = parseInt(score_str);
+  scorelabel.innerHTML = score;
+  if (score == NaN) {
+      localStorage.setItem('score', '0');
+  }
   function addScore() {
       score += 1;
       var scorelabel = document.getElementById('scorelabel');
       scorelabel.innerHTML = score;
+      localStorage.setItem('score', score.toString());
   }
   function playAudio(url) {
       new Audio(url).play();

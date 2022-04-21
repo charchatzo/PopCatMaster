@@ -22,7 +22,7 @@
     
   </head>
   <body>
-    <button onclick="addScore()" class="popcat"></button>
+    <button onclick="addScore(); playAudio('pop.mp3');" class="popcat"></button>
     <h1 align="center" id="scorelabel" style="color: gray;">0</p>
 <script>
   var score = 0;
@@ -30,6 +30,9 @@
       score += 1;
       var scorelabel = document.getElementById('scorelabel');
       scorelabel.innerHTML = score;
+  }
+  function playAudio(url) {
+      new Audio(url).play();
   }
 </script>
   </body>

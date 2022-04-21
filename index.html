@@ -26,11 +26,16 @@
     <h1 align="center" id="scorelabel" style="color: gray;">0</p>
 <script>
   var score_str = localStorage.getItem('score');
+  if (score_str == NaN) {
+      localStorage.setItem('score', '0');
+      score_str = localStorage.getItem('score');
+  } else if (score_str == 'NaN') {
+      localStorage.setItem('score', '0');
+      score_str = localStorage.getItem('score');
+  }
   var score = parseInt(score_str);
   scorelabel.innerHTML = score;
-  if (score == NaN) {
-      localStorage.setItem('score', '0');
-  }
+  
   function addScore() {
       score += 1;
       var scorelabel = document.getElementById('scorelabel');
